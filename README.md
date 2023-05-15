@@ -6,5 +6,5 @@ support system with laravel 10x with docker, at a high level, using dto, validat
 
 - [tailwindcss](https://tailwindcss.com/).
 
-- **[Laravel 10x]([https://vehikl.com/](https://laravel.com/docs/10.x#your-first-laravel-project))**
+- **[Laravel 10x](https://laravel.com/docs/10.x#your-first-laravel-project)**
 
