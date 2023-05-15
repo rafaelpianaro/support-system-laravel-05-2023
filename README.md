@@ -2,9 +2,9 @@
 
 ## Support System Laravel 10x
 
-Crud
+support system with laravel 10x with docker, at a high level, using dto, validations, service layer, helper, adapter, full crud, frontend with tailwind
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [tailwindcss](https://tailwindcss.com/).
 
-- **[Vehikl](https://vehikl.com/)**
+- **[Laravel 10x]([https://vehikl.com/](https://laravel.com/docs/10.x#your-first-laravel-project))**
 
