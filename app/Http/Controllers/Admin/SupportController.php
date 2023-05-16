@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Support;
 use Illuminate\Http\Request;
 
@@ -35,9 +36,14 @@ class SupportController extends Controller
         return view('admin.supports.create');
     }
 
-    public function store(Request $request) 
+    public function store(StoreUpdateSupport $request, Support $support) 
     {
-        dd($request->all());
+        $data = $request->all();
+        $data['status'] = 'pending';
+
+        $support->create($data);
+
+        return redirect()->route('admin.supports.index');
     }
 
     public function edit(Support $support, string|int $id)
@@ -49,7 +55,7 @@ class SupportController extends Controller
         return view('admin.supports.edit', compact('support'));
     }
 
-    public function update(Request $request, Support $support, string $id)
+    public function update(StoreUpdateSupport $request, Support $support, string $id)
     {
         if (!$support = $support->find($id)) {
             return back();
@@ -59,9 +65,11 @@ class SupportController extends Controller
         // $support->body = $request->body;
         // $support->save();
 
-        $support->update($request->only([
-            'subject', 'body'
-        ]));
+        // $support->update($request->only([
+        //     'subject', 'body'
+        // ]));
+
+        $support->update($request->validated());
 
         return redirect()->route('supports.index');
     }
