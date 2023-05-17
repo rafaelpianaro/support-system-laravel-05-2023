@@ -46,7 +46,7 @@ class SupportController extends Controller
     {
         $this->service->new(CreateSupportDTO::makeFromRequest($request));
 
-        return redirect()->route('admin.supports.index');
+        return redirect()->route('supports.index');
     }
 
     public function edit(string $id)

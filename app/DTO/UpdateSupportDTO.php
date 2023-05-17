@@ -20,7 +20,7 @@ class UpdateSupportDTO
             $request->id,
             $request->subject,
             // setando um valor default
-            'opening',
+            'pending',
             $request->body,
         );
     }

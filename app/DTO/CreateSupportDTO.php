@@ -18,7 +18,7 @@ class CreateSupportDTO
         return new self(
             $request->subject,
             // setando um valor default
-            'opening',
+            'pending',
             $request->body,
         );
     }
