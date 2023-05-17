@@ -2,6 +2,8 @@
 
 <a href="{{ route('supports.create') }}"> Criar Dúvida</a>
 
+{{-- {{ $supports->path() }} --}}
+
 <table>
     <thead>
         <tr>
