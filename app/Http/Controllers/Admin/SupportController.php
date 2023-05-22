@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DTO\CreateSupportDTO;
-use App\DTO\UpdateSupportDTO;
+use App\DTO\Supports\CreateSupportDTO;
+use App\DTO\Supports\UpdateSupportDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateSupport;
 use App\Models\Support;
@@ -25,13 +25,19 @@ class SupportController extends Controller
             totalPerPage: $request->get('per_page', 1),
             filter: $request->filter,
         );
+
+        $filters = ['filter' => $request->get('filter', '')];
+
+        return view('admin.supports.index', compact('supports', 'filters'));
+
         // paginate
         // $supports = Support::paginate();
         // dd($supports);
         // paginate na view
         // {{ $supports->path() }}
 
-        return view('admin.supports.index', compact('supports'));
+        // dd($supports->items());
+
     }
 
     public function show(string $id)

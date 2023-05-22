@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DTO;
+namespace App\DTO\Supports;
 
 use App\Http\Requests\StoreUpdateSupport;
 
@@ -18,7 +18,7 @@ class CreateSupportDTO
         return new self(
             $request->subject,
             // setando um valor default
-            'pending',
+            'Pending',
             $request->body,
         );
     }
