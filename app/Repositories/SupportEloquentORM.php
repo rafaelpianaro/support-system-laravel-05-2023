@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\DTO\CreateSupportDTO;
-use App\DTO\UpdateSupportDTO;
+use App\DTO\Supports\CreateSupportDTO;
+use App\DTO\Supports\UpdateSupportDTO;
 use App\Models\Support;
 use App\Repositories\SupportRepositoryInterface;
 use stdClass;
@@ -23,9 +23,10 @@ class SupportEloquentORM implements SupportRepositoryInterface
                             $query->orWhere('body', 'like', "%{$filter}%");
                         }
                     })
-                    ->paginate($totalPerPage, ['*'], 'page', $page)
-                    ->toArray();
-        // dd($result);
+                    ->paginate($totalPerPage, ['*'], 'page', $page);
+        // dd(new PaginationPresenter($result));
+        // dd((new PaginationPresenter($result))->items());
+        return new PaginationPresenter($result);
     }
 
     public function getAll(string $filter = null): array
