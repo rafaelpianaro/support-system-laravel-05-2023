@@ -3,6 +3,7 @@
 <a href="{{ route('supports.create') }}"> Criar Dúvida</a>
 
 {{-- {{ $supports->path() }} --}}
+{{-- https://laravel.com/docs/10.x/pagination#customizing-the-pagination-view --}}
 
 <table>
     <thead>
@@ -13,15 +14,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($supports as $support)
+        @foreach ($supports->items() as $support)
             <tr>
-                <td>{{ $support['subject'] }}</td>
-                <td>{{ $support['status'] }}</td>
-                <td>{{ $support['body'] }}</td>
-                <td><a href="{{ route('supports.show', $support['id']) }}">Visualizar</a></td>
-                <td><a href="{{ route('supports.edit', $support['id']) }}">Editar</a></td>
+                <td>{{ $support->subject }}</td>
+                {{-- <td>{{ $support->status }}</td> --}}
+                <td>{{ getStatusSupport($support->status) }}</td>
+                <td>{{ $support->body }}</td>
+                <td><a href="{{ route('supports.show', $support->id) }}">Visualizar</a></td>
+                <td><a href="{{ route('supports.edit', $support->id) }}">Editar</a></td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
+<x-pagination :paginator="$supports" :appends="$filters" />
 
