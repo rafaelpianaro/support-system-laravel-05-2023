@@ -15,10 +15,10 @@ class UpdateSupportDTO
     ) {}
 
     // recebendo a \request com um objeto da própria classe
-    public static function makeFromRequest(StoreUpdateSupport $request): self
+    public static function makeFromRequest(StoreUpdateSupport $request, string $id = null): self
     {
         return new self(
-            $request->id,
+            $id ?? $request->id,
             $request->subject,
             // setando um valor default
             SupportStatus::Pending,

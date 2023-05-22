@@ -31,13 +31,14 @@ class StoreUpdateSupport extends FormRequest
             ],
         ];
         
-        if ($this->method() === 'PUT') {
+        if ($this->method() === 'PUT' || $this->method() === 'PATH') {
             $rules['subject'] = [
                 'required',
                 'min:3',
                 'max:200',
                 // "unique:supports, subject, {$this->id},id"
-                Rule::unique('supports')->ignore($this->id)
+                //$this->support ?? $this->id  = it was necessary validated because support come from resource and id come from different resource routes
+                Rule::unique('supports')->ignore($this->support ?? $this->id) 
             ];
         }
 
